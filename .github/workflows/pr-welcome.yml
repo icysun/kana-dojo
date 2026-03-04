@@ -59,9 +59,9 @@ jobs:
             async function reactToPR(prNumber, reactions) {
               for (const content of reactions) {
                 try {
-                  await github.rest.reactions.createForPullRequest({
+                  await github.rest.reactions.createForIssue({
                     owner: context.repo.owner, repo: context.repo.repo,
-                    pull_number: prNumber, content
+                    issue_number: prNumber, content
                   });
                 } catch (e) { console.log(`PR reaction ${content} failed: ${e.message}`); }
               }
